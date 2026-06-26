@@ -2,7 +2,10 @@
 
 An AI-powered job application assistant built with Next.js and Gemini. Upload your resume once, search jobs, get AI fit scores, generate tailored resumes and cover letters — all in one place.
 
-![Career Copilot](public/preview.png)
+## Career Copilot
+<img width="1897" height="862" alt="Career Copilot" src="https://github.com/user-attachments/assets/c38d3012-a95a-498d-bcbd-495ad20baaeb" />
+## Career Copilot - Dashboard
+<img width="1896" height="867" alt="Career Copilot - Dashboard" src="https://github.com/user-attachments/assets/e50433eb-c85b-4647-95de-7ea36f7ef606" />
 
 ## Features
 
