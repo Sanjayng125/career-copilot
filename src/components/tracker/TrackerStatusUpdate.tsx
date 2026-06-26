@@ -35,6 +35,7 @@ export default function TrackerStatusUpdate({
     },
     onSuccess: (_, newStatus) => {
       setStatus(newStatus);
+      queryClient.refetchQueries({ queryKey: ["application", applicationId] });
       queryClient.refetchQueries({ queryKey: ["applications"] });
       queryClient.refetchQueries({ queryKey: ["dashboard"] });
       toast.success("Status updated!");
@@ -62,7 +63,7 @@ export default function TrackerStatusUpdate({
             key={s.value}
             onClick={() => updateStatus(s.value)}
             className={`flex items-center justify-between gap-4 ${STATUS_STYLES[s.value]}`}
-            disabled={s.value === currentStatus || isPending}
+            disabled={s.value === current?.value || isPending}
           >
             {s.label}
             {s.value === status && <Check size={12} />}
