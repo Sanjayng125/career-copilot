@@ -76,7 +76,10 @@ export default function UsageCard() {
         </span>
       </div>
 
-      <Notice message="Due to very low free quota of Job Search API, i have restricted the route to very low search limits. so test the project wisely." />
+      <Notice
+        message="Due to very low free quota of Job Search API, i have restricted the route to very low search limits. so test the project wisely."
+        className="text-center"
+      />
 
       {isPro ? (
         <p className="text-xs text-muted-foreground">
@@ -136,7 +139,7 @@ export default function UsageCard() {
 
           <Notice
             message="Use test card: 4242 4242 4242 4242, any future date and rest any values."
-            className="mt-5 mx-auto w-max"
+            className="mt-2 text-center w-fit mx-auto"
           />
         </div>
       )}

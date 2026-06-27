@@ -9,25 +9,7 @@ import { UsageData } from "@/types";
 import { toast } from "sonner";
 import { useState } from "react";
 import Notice from "@/components/notice";
-
-const FREE_FEATURES = [
-  "10 AI analyses per day",
-  "5 job searches per day",
-  "1 resume upload",
-  "Application tracker",
-  "Cover letter generation",
-  "Tailored resume generation",
-];
-
-const PRO_FEATURES = [
-  "Unlimited AI analyses",
-  "Unlimited job searches",
-  "Multiple resume versions",
-  "Application tracker",
-  "Cover letter generation",
-  "Tailored resume generation",
-  "Priority support",
-];
+import { FREE_FEATURES, PRO_FEATURES } from "@/lib/constants";
 
 export default function PricingPage() {
   const { user } = useAuth();
@@ -66,7 +48,7 @@ export default function PricingPage() {
 
   return (
     <div className="bg-background">
-      <div className="max-w-4xl mx-auto px-6 py-16">
+      <div className="max-w-6xl mx-auto px-6 py-16">
         <div className="text-center mb-12">
           <h1 className="text-3xl font-medium mb-3">Simple pricing</h1>
           <p className="text-muted-foreground text-sm">
@@ -153,7 +135,7 @@ export default function PricingPage() {
 
         <Notice
           message="Use test card: 4242 4242 4242 4242, any future date and rest any values."
-          className="mt-5 mx-auto w-max"
+          className="mt-4 text-center w-fit mx-auto"
         />
       </div>
     </div>

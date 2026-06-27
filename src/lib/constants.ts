@@ -38,3 +38,22 @@ export const EMPLOYMENT_TYPE_OPTIONS: { label: string; value: EMPLOYMENT_TYPE }[
     { label: "Part-time", value: "PARTTIME" },
     { label: "Intern", value: "INTERN" },
 ];
+
+export const FREE_FEATURES = [
+    "10 AI analyses per day",
+    "5 job searches per day",
+    "1 resume upload",
+    "Application tracker",
+    "Cover letter generation",
+    "Tailored resume generation",
+];
+
+export const PRO_FEATURES = [
+    "Unlimited AI analyses",
+    "Unlimited job searches",
+    "Multiple resume versions",
+    "Application tracker",
+    "Cover letter generation",
+    "Tailored resume generation",
+    "Priority support",
+];

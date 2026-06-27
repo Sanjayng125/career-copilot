@@ -19,7 +19,7 @@ export default function JobsPage() {
 
         <Notice
           message="Due to very low free quota of Job Search API, i have restricted the route to very low search limits. so test the project wisely."
-          className="mt-3"
+          className="mt-2 text-center"
         />
       </div>
 
