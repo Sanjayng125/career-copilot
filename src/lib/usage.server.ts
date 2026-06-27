@@ -15,7 +15,8 @@ export async function checkAndIncrementUsage(
     type: "analyses" | "searches",
     plan: string
 ): Promise<{ allowed: boolean; remaining: number }> {
-    if (plan === "pro") return { allowed: true, remaining: 999 };
+    // remove type check in production
+    if (type !== "searches" && plan === "pro") return { allowed: true, remaining: 999 };
 
     const key = getTodayKey(userId, type);
     const limit = FREE_LIMITS[type];

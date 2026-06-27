@@ -21,3 +21,10 @@ export const jobSearchRateLimit = new Ratelimit({
     prefix: 'career-copilot:job-search',
     analytics: true,
 })
+
+export const checkoutRateLimit = new Ratelimit({
+    redis,
+    limiter: Ratelimit.slidingWindow(1, '10s'),
+    prefix: 'career-copilot:checkout',
+    analytics: true,
+})

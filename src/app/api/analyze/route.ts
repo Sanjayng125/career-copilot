@@ -12,9 +12,7 @@ export async function POST(request: Request) {
         const { data: { user } } = await supabase.auth.getUser();
         if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-        const { success, reset, } = await analzseRateLimit.limit(
-            user.id
-        )
+        const { success, reset, } = await analzseRateLimit.limit(user.id)
         if (!success) {
             const resetIn = Math.ceil((reset - Date.now()) / 1000)
             return NextResponse.json(

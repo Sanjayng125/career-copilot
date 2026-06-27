@@ -2,12 +2,25 @@ import { createClient } from "@/lib/supabase/server";
 import { NextResponse } from "next/server";
 import { setupLemonSqueezy } from "@/lib/lemonsqueezy";
 import { createCheckout } from "@lemonsqueezy/lemonsqueezy.js";
+import { checkoutRateLimit } from "@/lib/redis/rate-limit";
 
 export async function GET() {
     try {
         const supabase = await createClient();
         const { data: { user } } = await supabase.auth.getUser();
         if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
+        const { success, reset } = await checkoutRateLimit.limit(user.id)
+        if (!success) {
+            return NextResponse.json(
+                {
+                    error: `Too many requests. Hold on a sec. Try again in ${Math.ceil((reset - Date.now()) / 1000)}s.`,
+                },
+                {
+                    status: 429,
+                }
+            )
+        }
 
         const { data: userData } = await supabase
             .from("users")

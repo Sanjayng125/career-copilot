@@ -48,7 +48,7 @@ export async function POST(request: Request) {
             case "subscription_resumed":
             case "subscription_unpaused": {
                 const endsAt = attributes?.ends_at ?? attributes?.renews_at ?? null;
-                console.log("Upgrading to pro", { eventName, endsAt });
+                // console.log("Upgrading to pro", { eventName, endsAt });
                 await supabase
                     .from("users")
                     .update({
@@ -60,7 +60,7 @@ export async function POST(request: Request) {
             }
 
             case "subscription_payment_success": {
-                console.log("Payment success, confirming pro", { eventName });
+                // console.log("Payment success, confirming pro", { eventName });
                 await supabase
                     .from("users")
                     .update({ plan: "pro" })
@@ -70,7 +70,7 @@ export async function POST(request: Request) {
 
             case "subscription_expired":
             case "subscription_payment_failed": {
-                console.log("Downgrading to free", { eventName });
+                // console.log("Downgrading to free", { eventName });
                 await supabase
                     .from("users")
                     .update({
@@ -83,7 +83,7 @@ export async function POST(request: Request) {
 
             case "subscription_cancelled":
             case "subscription_paused": {
-                console.log("Subscription paused/cancelled", { eventName });
+                // console.log("Subscription paused/cancelled", { eventName });
                 const endsAt = attributes?.ends_at ?? null;
                 await supabase
                     .from("users")
@@ -98,7 +98,7 @@ export async function POST(request: Request) {
                 const endsAt = attributes?.ends_at ?? attributes?.renews_at ?? null;
                 const status = attributes?.status as string;
                 const isActive = ["active", "on_trial"].includes(status);
-                console.log("Subscription updated", { eventName, isActive, endsAt });
+                // console.log("Subscription updated", { eventName, isActive, endsAt });
                 await supabase
                     .from("users")
                     .update({
