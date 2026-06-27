@@ -133,6 +133,11 @@ export default function UsageCard() {
             <Crown size={12} />
             Upgrade to Pro
           </Link>
+
+          <Notice
+            message="Use test card: 4242 4242 4242 4242, any future date and rest any values."
+            className="mt-5 mx-auto w-max"
+          />
         </div>
       )}
     </div>

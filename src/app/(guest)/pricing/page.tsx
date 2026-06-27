@@ -8,6 +8,7 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import { UsageData } from "@/types";
 import { toast } from "sonner";
 import { useState } from "react";
+import Notice from "@/components/notice";
 
 const FREE_FEATURES = [
   "10 AI analyses per day",
@@ -149,6 +150,11 @@ export default function PricingPage() {
             )}
           </div>
         </div>
+
+        <Notice
+          message="Use test card: 4242 4242 4242 4242, any future date and rest any values."
+          className="mt-5 mx-auto w-max"
+        />
       </div>
     </div>
   );
