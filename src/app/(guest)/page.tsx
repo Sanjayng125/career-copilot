@@ -8,7 +8,6 @@ import {
   Brain,
   Sparkles,
 } from "lucide-react";
-import Header from "@/components/layout/Header";
 
 const features = [
   {
@@ -52,9 +51,7 @@ const steps = [
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <Header />
-
+    <div className="bg-background text-foreground">
       <section className="flex flex-col items-center text-center px-6 py-20 border-b border-border">
         <div className="flex items-center gap-1.5 bg-muted border border-border rounded-full px-3 py-1 text-xs text-muted-foreground mb-6">
           <Sparkles size={12} />

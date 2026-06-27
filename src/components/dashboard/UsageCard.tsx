@@ -48,7 +48,7 @@ export default function UsageCard() {
 
   if (!data) return null;
 
-  const isPro = data.plan === "pro";
+  const isPro = data?.plan === "pro";
 
   return (
     <div className="bg-card border border-border rounded-xl p-2.5 sm:p-5 mb-8 flex flex-col gap-4">
@@ -127,7 +127,7 @@ export default function UsageCard() {
           </div>
 
           <Link
-            href="#pricing"
+            href="/pricing"
             className="w-full mt-1 flex items-center justify-center gap-1.5 bg-muted hover:bg-muted/70 transition-colors text-xs font-medium py-2 rounded-lg"
           >
             <Crown size={12} />

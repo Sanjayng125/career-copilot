@@ -9,6 +9,7 @@ import {
   BriefcaseIcon,
   LogOut,
   FileText,
+  Crown,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -23,6 +24,7 @@ const navItems = [
   { label: "Find jobs", href: "/jobs", icon: Search },
   { label: "Tracker", href: "/tracker", icon: LayoutList },
   { label: "Resume", href: "/resume", icon: FileText },
+  { label: "Pricing", href: "/pricing", icon: Crown },
 ];
 
 export default function Sidebar({

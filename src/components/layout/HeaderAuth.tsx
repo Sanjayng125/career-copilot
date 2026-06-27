@@ -66,14 +66,17 @@ export default function HeaderAuth() {
         <DropdownMenuItem>
           <Link
             href="/dashboard"
-            className="flex items-center gap-2 cursor-pointer"
+            className="w-full flex items-center gap-2 cursor-pointer"
           >
             <LayoutDashboard size={14} />
             Dashboard
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <Link href="/jobs" className="flex items-center gap-2 cursor-pointer">
+          <Link
+            href="/jobs"
+            className="w-full flex items-center gap-2 cursor-pointer"
+          >
             <Search size={14} />
             Search jobs
           </Link>
