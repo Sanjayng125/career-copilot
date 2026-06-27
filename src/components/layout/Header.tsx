@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { BriefcaseIcon } from "lucide-react";
 import HeaderAuth from "@/components/layout/HeaderAuth";
+import { ThemeToggle } from "../theme-toggle";
 
 export default async function Header() {
   return (
@@ -11,7 +12,10 @@ export default async function Header() {
         </div>
         <span className="font-medium text-sm">Career Copilot</span>
       </Link>
-      <HeaderAuth />
+      <div className="flex items-center gap-2">
+        <HeaderAuth />
+        <ThemeToggle />
+      </div>
     </nav>
   );
 }
