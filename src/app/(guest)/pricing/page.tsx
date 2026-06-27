@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Check, Crown, Zap } from "lucide-react";
+import { Check, Crown, Loader2, Zap } from "lucide-react";
 import Link from "next/link";
 import { useAuth } from "@/providers/auth-provider";
 import { useMutation, useQuery } from "@tanstack/react-query";
@@ -35,16 +35,25 @@ export default function PricingPage() {
 
       const data = await res.json();
 
-      if (!res.ok) throw new Error(data?.error ?? "Failed to create checkout");
+      if (!res.ok || !data?.checkoutUrl)
+        throw new Error(data?.error ?? "Failed to create checkout");
 
       return data;
+    },
+    onSuccess: (res) => {
+      window.location.href = res?.checkoutUrl;
     },
     onError: (err) => {
       toast.error(err.message);
     },
   });
 
-  if (isLoading) return null;
+  if (isLoading)
+    return (
+      <div className="min-h-[calc(100dvh-150px)] bg-background flex items-center justify-center">
+        <Loader2 size={28} className="animate-spin" />
+      </div>
+    );
 
   return (
     <div className="bg-background">

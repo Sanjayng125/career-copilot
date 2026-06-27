@@ -62,7 +62,7 @@ export async function GET() {
         const checkoutUrl = checkout.data?.data.attributes.url;
         if (!checkoutUrl) throw new Error("Failed to create checkout URL");
 
-        return NextResponse.redirect(checkoutUrl);
+        return NextResponse.json({ checkoutUrl });
     } catch (error) {
         console.error("Checkout error:", error);
         return NextResponse.json({ error: "Failed to create checkout" }, { status: 500 });
