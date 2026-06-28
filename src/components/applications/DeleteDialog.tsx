@@ -40,6 +40,7 @@ export default function DeleteDialog({
       toast.success("Application deleted successfully!");
 
       queryClient.refetchQueries({ queryKey: ["applications"] });
+      queryClient.refetchQueries({ queryKey: ["dashboard"] });
       onSuccess();
     },
     onError: (err) => {

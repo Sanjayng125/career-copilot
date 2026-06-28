@@ -12,7 +12,6 @@ import {
 } from "lucide-react";
 import type { Application, Resume } from "@/types";
 import Link from "next/link";
-import { getAvgFitScore, getStatusCounts } from "@/utils";
 import { STATUS_STYLES } from "@/lib/constants";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
