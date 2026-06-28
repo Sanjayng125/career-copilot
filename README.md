@@ -66,6 +66,7 @@ pnpm install
 3. Create `.env.local`:
 
 ```env
+NEXT_PUBLIC_APP_URL=your_app_url
 NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
 SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key

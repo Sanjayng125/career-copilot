@@ -56,6 +56,8 @@ export default function TrackerPage() {
   });
 
   const applications = (data?.applications ?? []) as Application[];
+  const totalApplications =
+    data?.totalApplications || data?.applications.length || 0;
   const currentPage = data?.currentPage || 1;
   const totalPages = data?.totalPages || 1;
 
@@ -146,8 +148,8 @@ export default function TrackerPage() {
           </div>
 
           <p className="text-xs text-muted-foreground">
-            {applications.length} application
-            {applications.length !== 1 ? "s" : ""}
+            {totalApplications} application
+            {totalApplications !== 1 ? "s" : ""}
           </p>
 
           {applications.length === 0 && !isFetching && isFetched ? (
@@ -238,6 +240,7 @@ export default function TrackerPage() {
                 page={page}
                 setPage={setPage}
                 totalPages={totalPages}
+                disabled={isApplicationsLoading || isFetching}
               />
             </div>
           )}

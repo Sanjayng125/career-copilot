@@ -20,6 +20,7 @@ import { useAuth } from "@/providers/auth-provider";
 import { toast } from "sonner";
 import NotFound from "@/app/not-found";
 import TrackerStatusUpdate from "@/components/tracker/TrackerStatusUpdate";
+import NotesEditor from "@/components/applications/NotesEditor";
 
 export default function AnalyzePage() {
   const { id } = useParams<{ id: string }>();
@@ -107,11 +108,15 @@ export default function AnalyzePage() {
                 </p>
               </div>
               <div className="flex flex-wrap gap-2">
-                {app.matched_skills?.map((skill) => (
-                  <Badge key={skill} variant="secondary" className="text-xs">
-                    {skill}
-                  </Badge>
-                ))}
+                {app.matched_skills?.length > 0 ? (
+                  app.matched_skills?.map((skill) => (
+                    <Badge key={skill} variant="secondary" className="text-xs">
+                      {skill}
+                    </Badge>
+                  ))
+                ) : (
+                  <p className="text-xs text-muted-foreground">N/A</p>
+                )}
               </div>
             </div>
             <div className="bg-card border border-border rounded-xl p-2.5 sm:p-5">
@@ -122,11 +127,15 @@ export default function AnalyzePage() {
                 </p>
               </div>
               <div className="flex flex-wrap gap-2">
-                {app.missing_skills?.map((skill) => (
-                  <Badge key={skill} variant="secondary" className="text-xs">
-                    {skill}
-                  </Badge>
-                ))}
+                {app.missing_skills?.length > 0 ? (
+                  app.missing_skills?.map((skill) => (
+                    <Badge key={skill} variant="secondary" className="text-xs">
+                      {skill}
+                    </Badge>
+                  ))
+                ) : (
+                  <p className="text-xs text-muted-foreground">N/A</p>
+                )}
               </div>
             </div>
           </div>
@@ -141,7 +150,7 @@ export default function AnalyzePage() {
             </div>
 
             <TabsContent value="resume">
-              <div className="bg-card border border-border rounded-xl p-3 sm:p-6 prose prose-sm prose-invert max-w-none">
+              <div className="bg-card border border-border rounded-xl p-3 sm:p-6 prose prose-sm max-w-none">
                 <ReactMarkdown remarkPlugins={[remarkGfm]}>
                   {app.tailored_resume}
                 </ReactMarkdown>
@@ -156,6 +165,13 @@ export default function AnalyzePage() {
               </div>
             </TabsContent>
           </Tabs>
+
+          <div className="mt-6 bg-card border border-border rounded-xl p-2.5 sm:p-5">
+            <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground mb-3">
+              Personal notes
+            </p>
+            <NotesEditor applicationId={app.id} initialNotes={app.notes} />
+          </div>
         </div>
       )}
     </div>
