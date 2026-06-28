@@ -13,6 +13,7 @@ import {
   Loader2,
   MapPin,
   Search,
+  Trash2,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import TrackerStatusUpdate from "@/components/tracker/TrackerStatusUpdate";
@@ -27,6 +28,7 @@ import { FILTER_STATUS_OPTIONS } from "@/lib/constants";
 import { useDebounce } from "@/hooks/use-debounce";
 import { useAuth } from "@/providers/auth-provider";
 import { PaginationControls } from "@/components/data-fetching/PaginationControls";
+import DeleteDialog from "@/components/applications/DeleteDialog";
 
 export default function TrackerPage() {
   const { user } = useAuth();
@@ -36,6 +38,7 @@ export default function TrackerPage() {
   );
   const [page, setPage] = useState(1);
   const debounced = useDebounce(search.trim(), 300);
+  const [deleteOpen, setDeleteOpen] = useState(false);
 
   const {
     data,
@@ -161,7 +164,7 @@ export default function TrackerPage() {
               {applications.map((app) => (
                 <div
                   key={app.id}
-                  className={`bg-card border border-border rounded-xl p-2 sm:p-4 grid grid-cols-1 xl:grid-cols-2 gap-4 ${isFetching && "opacity-60"}`}
+                  className={`bg-card border border-border rounded-xl p-2 sm:p-4 grid max-lg:grid-cols-1 grid-cols-2 gap-4 ${isFetching && "opacity-60"}`}
                 >
                   <div>
                     <p className="text-sm font-medium line-clamp-1">
@@ -181,7 +184,7 @@ export default function TrackerPage() {
                     </div>
                   </div>
 
-                  <div className="flex flex-wrap items-center xl:justify-between gap-2 sm:gap-3">
+                  <div className="flex flex-wrap items-center gap-2 sm:gap-3">
                     <div>
                       <TrackerStatusUpdate
                         applicationId={app.id}
@@ -231,7 +234,24 @@ export default function TrackerPage() {
                         {app.source}
                       </Badge>
                     </div>
+
+                    <div>
+                      <Button
+                        size="icon"
+                        variant="destructive"
+                        onClick={() => setDeleteOpen(true)}
+                      >
+                        <Trash2 size={14} className="text-red-500" />
+                      </Button>
+                    </div>
                   </div>
+
+                  <DeleteDialog
+                    applicationId={app.id}
+                    open={deleteOpen}
+                    onClose={() => setDeleteOpen(false)}
+                    onSuccess={() => setDeleteOpen(false)}
+                  />
                 </div>
               ))}
 
