@@ -74,6 +74,11 @@ GEMINI_API_KEY=your_gemini_api_key
 JSEARCH_API_KEY=your_jsearch_rapidapi_key
 UPSTASH_REDIS_REST_URL=your_upstash_url
 UPSTASH_REDIS_REST_TOKEN=your_upstash_token
+LEMONSQUEEZY_API_KEY=your_lemonsqueezy_api_key
+LEMONSQUEEZY_STORE_ID=your_lemonsqueezy_store_id
+LEMONSQUEEZY_VARIANT_ID=your_lemonsqueezy_variant_id
+LEMONSQUEEZY_WEBHOOK_SECRET=your_lemonsqueezy_webhook_secret
+LEMONSQUEEZY_ENV=development/production
 ```
 
 4. Set up Supabase:
