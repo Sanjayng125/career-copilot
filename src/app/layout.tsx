@@ -16,6 +16,9 @@ export const metadata: Metadata = {
   title: "Career Copilot",
   description:
     "Your AI-powered job hunter. Find the perfect job for you. Apply for the job of your dreams. Track your Applications. Get a comprehensive analysis of your resume. And much more.",
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
